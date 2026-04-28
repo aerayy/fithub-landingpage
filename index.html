@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Fithub — Cebindeki kişisel fitness koçun</title>
+  <meta name="description" content="Kişiye özel antrenman, beslenme ve kardiyo programları. Gerçek koçlarla 7/24 mesajlaşma. AI destekli plan, ilerleme takibi ve çok daha fazlası — hepsi tek uygulamada." />
+  <meta name="theme-color" content="#0A0E0E" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Fithub — Cebindeki kişisel fitness koçun" />
+  <meta property="og:description" content="Kişiye özel antrenman ve beslenme programları, gerçek koçlarla 7/24 mesajlaşma, AI destekli rehberlik." />
+  <meta property="og:locale" content="tr_TR" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Noise overlay (premium grain texture) -->
+  <div class="noise" aria-hidden="true"></div>
+
+  <!-- ─── NAV ───────────────────────────────────────────── -->
+  <header class="nav" id="nav">
+    <div class="nav__inner container">
+      <a href="#top" class="nav__brand" aria-label="Fithub anasayfa">
+        <span class="nav__logo-mark">F</span>
+        <span class="nav__logo-text">Fithub</span>
+      </a>
+
+      <nav class="nav__links" aria-label="Ana navigasyon">
+        <a href="#features"><span class="nav__num">01</span>Özellikler</a>
+        <a href="#how"><span class="nav__num">02</span>Nasıl Çalışır</a>
+        <a href="#coaches"><span class="nav__num">03</span>Koçlar</a>
+        <a href="#download"><span class="nav__num">04</span>İndir</a>
+      </nav>
+
+      <a href="#download" class="btn btn--primary nav__cta">
+        <span>Hemen Başla</span>
+        <span class="btn__arrow" aria-hidden="true">→</span>
+      </a>
+
+      <button class="nav__menu-btn" id="navMenuBtn" aria-label="Menüyü aç" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ─── HERO ──────────────────────────────────────────── -->
+  <section class="hero" id="top">
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero__glow hero__glow--1"></div>
+      <div class="hero__glow hero__glow--2"></div>
+      <div class="hero__grid"></div>
+    </div>
+
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <span class="eyebrow">
+          <span class="eyebrow__dot"></span>
+          Yeni nesil fitness platformu / 2026
+        </span>
+
+        <h1 class="hero__title">
+          <span class="hero__title-line">Cebindeki</span>
+          <span class="hero__title-line hero__title-line--accent">
+            <em>kişisel</em> koçun.
+          </span>
+        </h1>
+
+        <p class="hero__subtitle">
+          Hedeflerine göre hazırlanmış antrenman, beslenme ve kardiyo programları.
+          Gerçek koçlarla 7/24 mesajlaşma. AI destekli rehberlik. Hepsi tek uygulamada.
+        </p>
+
+        <div class="hero__ctas">
+          <a href="#download" class="btn btn--primary btn--large">
+            <span>Hemen Başla</span>
+            <span class="btn__arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="#features" class="btn btn--ghost btn--large">
+            <span class="btn__play" aria-hidden="true">▶</span>
+            <span>Nasıl çalışır?</span>
+          </a>
+        </div>
+
+        <div class="hero__meta">
+          <div class="hero__meta-item">
+            <strong data-counter="500">0</strong>
+            <span>+ Türk yemeği<br/>veritabanı</span>
+          </div>
+          <div class="hero__meta-divider"></div>
+          <div class="hero__meta-item">
+            <strong data-counter="900">0</strong>
+            <span>+ Egzersiz<br/>ve hareket</span>
+          </div>
+          <div class="hero__meta-divider"></div>
+          <div class="hero__meta-item">
+            <strong>7/24</strong>
+            <span>Koç<br/>desteği</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- HERO VISUAL: animated phone cluster -->
+      <div class="hero__visual" aria-hidden="true">
+        <!-- Floating UI cards around the phone -->
+        <div class="floater floater--workout">
+          <div class="floater__icon floater__icon--teal">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6 L18 18 M6 18 L18 6"/></svg>
+          </div>
+          <div class="floater__body">
+            <div class="floater__label">Antrenman tamamlandı</div>
+            <div class="floater__value">Push Day · 48 dk</div>
+          </div>
+          <div class="floater__check">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </div>
+
+        <div class="floater floater--message">
+          <div class="floater__avatar"></div>
+          <div class="floater__body">
+            <div class="floater__label">Koç Mert</div>
+            <div class="floater__msg">"Bu hafta harikaydın! 💪"</div>
+          </div>
+        </div>
+
+        <div class="floater floater--streak">
+          <div class="floater__streak-num">21</div>
+          <div class="floater__streak-info">
+            <div class="floater__label">Streak</div>
+            <div class="floater__sub">gün üst üste</div>
+          </div>
+          <div class="floater__flame">🔥</div>
+        </div>
+
+        <!-- Main phone -->
+        <div class="phone-stack">
+          <div class="phone-stack__back">
+            <div class="phone phone--small">
+              <img src="assets/screens/progress.png" alt="" loading="eager" />
+            </div>
+          </div>
+          <div class="phone-stack__main">
+            <div class="phone phone--hero">
+              <img src="assets/screens/home.png" alt="" loading="eager" />
+            </div>
+          </div>
+        </div>
+        <div class="phone-glow"></div>
+      </div>
+    </div>
+
+    <!-- Marquee ticker -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span class="marquee__item">Antrenman</span>
+        <span class="marquee__sep">✦</span>
+        <span class="marquee__item">Beslenme</span>
+        <span class="marquee__sep">✦</span>
+        <span class="marquee__item">Kardiyo</span>
+        <span class="marquee__sep">✦</span>
+        <span class="marquee__item">AI Koç</span>
+        <span class="marquee__sep">✦</span>
+        <span class="marquee__item">Sertifikalı Koçlar</span>
+        <span class="marquee__sep">✦</span>
+        <span class="marquee__item">Türk Mutfağı</span>
+        <span class="marquee__sep">✦</span>
+        <span class="marquee__item">İlerleme Takibi</span>
+        <span class="marquee__sep">✦</span>
+        <!-- Duplicated for seamless loop -->
+        <span class="marquee__item">Antrenman</span>
+        <span class="marquee__sep">✦</span>
+        <span class="marquee__item">Beslenme</span>
+        <span class="marquee__sep">✦</span>
+        <span class="marquee__item">Kardiyo</span>
+        <span class="marquee__sep">✦</span>
+        <span class="marquee__item">AI Koç</span>
+        <span class="marquee__sep">✦</span>
+        <span class="marquee__item">Sertifikalı Koçlar</span>
+        <span class="marquee__sep">✦</span>
+        <span class="marquee__item">Türk Mutfağı</span>
+        <span class="marquee__sep">✦</span>
+        <span class="marquee__item">İlerleme Takibi</span>
+        <span class="marquee__sep">✦</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TRUST STRIP ───────────────────────────────────── -->
+  <section class="trust">
+    <div class="container">
+      <p class="trust__label">
+        <span>Fithub ile elde ettiklerin</span>
+      </p>
+      <div class="trust__grid">
+        <div class="trust__item" data-reveal>
+          <div class="trust__icon trust__icon--teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L15 8 L22 9 L17 14 L18 22 L12 18 L6 22 L7 14 L2 9 L9 8 Z"/></svg>
+          </div>
+          <span>Kişiye özel<br/>programlar</span>
+        </div>
+        <div class="trust__item" data-reveal>
+          <div class="trust__icon trust__icon--purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <span>Gerçek koçlarla<br/>mesajlaş</span>
+        </div>
+        <div class="trust__item" data-reveal>
+          <div class="trust__icon trust__icon--orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="10"/></svg>
+          </div>
+          <span>Hareket başına<br/>video rehberi</span>
+        </div>
+        <div class="trust__item" data-reveal>
+          <div class="trust__icon trust__icon--yellow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d=" M7 14l4-4 4 4 5-5"/></svg>
+          </div>
+          <span>Grafiklerle<br/>ilerleme</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FEATURES SHOWCASE ─────────────────────────────── -->
+  <section class="features" id="features">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow">
+          <span class="eyebrow__dot"></span>
+          Uygulamada neler var
+        </span>
+        <h2 class="section-head__title">
+          Sağlığın için<br/>
+          <em>her şey</em> tek<br/>
+          bir uygulamada.
+        </h2>
+        <p class="section-head__subtitle">
+          Onboarding'den ilerleme takibine. Antrenman'dan beslenmeye.
+          Fithub seninle her adımda.
+        </p>
+      </header>
+
+      <!-- Feature 1 — Onboarding (TEAL) -->
+      <div class="feature feature--right" data-theme="teal" data-reveal>
+        <div class="feature__phone">
+          <div class="phone phone--tilt-left">
+            <img src="assets/screens/onboarding.png" alt="Fithub onboarding ekranı: hedef seçimi" />
+          </div>
+        </div>
+        <div class="feature__content">
+          <span class="feature__index">01 — Onboarding</span>
+          <h3 class="feature__title">Hedeflerine göre <em>tamamen sana özel.</em></h3>
+          <p class="feature__desc">
+            Birkaç soruya cevap ver, Fithub kim olduğunu, nereye gitmek istediğini ve nasıl çalıştığını öğrensin.
+            Kas geliştirme, kilo verme veya formda kalma — hangi hedefi seçersen seç,
+            programın seni o noktaya götürmek için tasarlanır.
+          </p>
+          <ul class="feature__list">
+            <li>Yaş, kilo, boy ve vücut tipine göre kişiselleştirme</li>
+            <li>Geçmiş deneyim ve aktivite seviyesi analizi</li>
+            <li>Tercih edilen antrenman yeri, süre ve günlere göre plan</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Feature 2 — Coach Discovery (TEAL) -->
+      <div class="feature feature--left" data-theme="teal" data-reveal>
+        <div class="feature__content">
+          <span class="feature__index">02 — Koç Keşfi</span>
+          <h3 class="feature__title">Doğru koçu <em>birkaç dokunuşla bul.</em></h3>
+          <p class="feature__desc">
+            Sertifikalı fitness koçlarını incele. Uzmanlık alanlarına, puanlarına ve öğrenci yorumlarına göz at.
+            Sana en uygun olanı seç ve yolculuğuna başla.
+          </p>
+          <ul class="feature__list">
+            <li>Onlarca uzman koç arasından seçim yap</li>
+            <li>Uzmanlık alanı ve deneyim filtreleri</li>
+            <li>Gerçek öğrenci puanları ve yorumları</li>
+          </ul>
+        </div>
+        <div class="feature__phone">
+          <div class="phone phone--tilt-right">
+            <img src="assets/screens/coach-list.png" alt="Tüm koçlar listesi ekranı" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 3 — Coach Profile (TEAL) -->
+      <div class="feature feature--right" data-theme="teal" data-reveal>
+        <div class="feature__phone">
+          <div class="phone phone--tilt-left">
+            <img src="assets/screens/coach-profile.png" alt="Koç profil sayfası: hakkında, paketler ve galeri" />
+          </div>
+        </div>
+        <div class="feature__content">
+          <span class="feature__index">03 — Koç Profili</span>
+          <h3 class="feature__title">Koçunu <em>yakından tanı.</em></h3>
+          <p class="feature__desc">
+            Her koçun detaylı profili, uzmanlık alanları, transformasyon hikâyeleri ve sunduğu paketler bir arada.
+            Karar vermeden önce neye imza attığını net bir şekilde gör.
+          </p>
+          <ul class="feature__list">
+            <li>Detaylı koç biyografisi ve uzmanlıklar</li>
+            <li>Önceki öğrencilerin transformasyon galerisi</li>
+            <li>Şeffaf paket fiyatları ve içerikleri</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Feature 4 — AI Coach (PURPLE) -->
+      <div class="feature feature--left" data-theme="purple" data-reveal>
+        <div class="feature__content">
+          <span class="feature__index">04 — AI Koç</span>
+          <h3 class="feature__title">AI Koç <em>7/24 yanında.</em></h3>
+          <p class="feature__desc">
+            Yapay zekâ destekli koçun her gün yanında. Verilerini analiz eder, sana özel programlar oluşturur,
+            sorularını cevaplar ve ilerlemenle birlikte programını günceller. Saat fark etmez, hep ulaşılabilir.
+          </p>
+          <ul class="feature__list">
+            <li>Onboarding bilgilerine göre kişisel analiz</li>
+            <li>Antrenman, beslenme ve kardiyo planı oluşturma</li>
+            <li>İki haftada bir otomatik program güncelleme</li>
+          </ul>
+        </div>
+        <div class="feature__phone">
+          <div class="phone phone--tilt-right">
+            <img src="assets/screens/ai-coach.png" alt="AI Koç tanıtım sayfası" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 5 — 3 Programs (MULTI-COLOR) -->
+      <div class="feature feature--right" data-theme="multi" data-reveal>
+        <div class="feature__phone">
+          <div class="phone phone--tilt-left">
+            <img src="assets/screens/programs.png" alt="Antrenman, beslenme ve kardiyo programları hazırlanıyor" />
+          </div>
+        </div>
+        <div class="feature__content">
+          <span class="feature__index">05 — Programlar</span>
+          <h3 class="feature__title">Üç program, <em>tek uygulama.</em></h3>
+          <p class="feature__desc">
+            Antrenman, beslenme ve kardiyo — üçü birden senin için hazırlanır. Her hareket için detaylı video rehberi,
+            her öğün için Türk mutfağına uygun tarifler ve seviyene göre kardiyo planı.
+          </p>
+          <div class="feature__pills">
+            <span class="pill pill--workout">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6 L18 18 M6 18 L18 6"/></svg>
+              Antrenman
+            </span>
+            <span class="pill pill--nutrition">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 2v7c0 1.1.9 2 2 2h4M7 2v20M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2z"/></svg>
+              Beslenme
+            </span>
+            <span class="pill pill--cardio">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="4" r="2"/><path d="M4 17l5-1 1-5 4 4 4-1"/></svg>
+              Kardiyo
+            </span>
+          </div>
+          <ul class="feature__list">
+            <li>900+ egzersiz, her birine video rehberi</li>
+            <li>500+ Türk yemeği içeren beslenme veritabanı</li>
+            <li>Hedefe yönelik kardiyo planları</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Feature 6 — Progress Tracking (TEAL) -->
+      <div class="feature feature--left" data-theme="teal" data-reveal>
+        <div class="feature__content">
+          <span class="feature__index">06 — İlerleme</span>
+          <h3 class="feature__title">İlerlemeni <em>sayılarla gör.</em></h3>
+          <p class="feature__desc">
+            Her ölçüm, her adım, her kalori kaydedilir. Kilo grafiklerini, vücut ölçülerini ve günlük hedeflerini
+            tek bir ekranda takip et. Küçük ilerlemeler büyük değişimlere dönüşürken motivasyonun hep yüksek kalır.
+          </p>
+          <ul class="feature__list">
+            <li>Kilo, ölçü ve günlük hedef takibi</li>
+            <li>Grafikler ve karşılaştırmalı analiz</li>
+            <li>Rozetler ve milestone başarımları</li>
+          </ul>
+        </div>
+        <div class="feature__phone">
+          <div class="phone phone--tilt-right">
+            <img src="assets/screens/progress.png" alt="Kilo takibi ekranı: grafik ve gelişmiş ölçüler" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EDITORIAL QUOTE BAND ──────────────────────────── -->
+  <section class="quote-band" aria-hidden="false">
+    <div class="container">
+      <div class="quote-band__inner">
+        <span class="quote-band__quote-mark">"</span>
+        <blockquote class="quote-band__text">
+          Fithub'la <em>3 ayda 8 kilo verdim.</em><br/>
+          Koçumla her gün konuşabilmek<br/>
+          her şeyi değiştirdi.
+        </blockquote>
+        <div class="quote-band__author">
+          <div class="quote-band__avatar"></div>
+          <div>
+            <div class="quote-band__name">Buse K.</div>
+            <div class="quote-band__role">Fithub kullanıcısı · 6. ay</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── HOW IT WORKS ──────────────────────────────────── -->
+  <section class="how" id="how">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow">
+          <span class="eyebrow__dot"></span>
+          Nasıl çalışır
+        </span>
+        <h2 class="section-head__title">
+          4 adımda <em>başla.</em>
+        </h2>
+      </header>
+
+      <ol class="steps">
+        <li class="step" data-reveal>
+          <span class="step__num">01</span>
+          <div class="step__line" aria-hidden="true"></div>
+          <h3 class="step__title">Profilini oluştur</h3>
+          <p class="step__desc">Hedeflerini, deneyimini ve tercihlerini birkaç soruda paylaş.</p>
+        </li>
+        <li class="step" data-reveal>
+          <span class="step__num">02</span>
+          <div class="step__line" aria-hidden="true"></div>
+          <h3 class="step__title">Koçunu seç</h3>
+          <p class="step__desc">Sertifikalı koçlardan veya AI Koç'tan sana uygun olanı seç.</p>
+        </li>
+        <li class="step" data-reveal>
+          <span class="step__num">03</span>
+          <div class="step__line" aria-hidden="true"></div>
+          <h3 class="step__title">Programını al</h3>
+          <p class="step__desc">Antrenman, beslenme ve kardiyo planın saatler içinde hazır.</p>
+        </li>
+        <li class="step" data-reveal>
+          <span class="step__num">04</span>
+          <h3 class="step__title">Hedefe ilerle</h3>
+          <p class="step__desc">Her gün küçük adımlar, büyük dönüşümler. Koçun her zaman yanında.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ─── FINAL CTA ─────────────────────────────────────── -->
+  <section class="cta" id="download">
+    <div class="container">
+      <div class="cta__card">
+        <div class="cta__bg" aria-hidden="true">
+          <div class="cta__glow"></div>
+          <div class="cta__grid"></div>
+        </div>
+        <div class="cta__content">
+          <span class="eyebrow">
+            <span class="eyebrow__dot"></span>
+            Hazır mısın?
+          </span>
+          <h2 class="cta__title">
+            Sağlığın için<br/>
+            <em>ilk adımı</em><br/>
+            bugün at.
+          </h2>
+          <p class="cta__subtitle">
+            Fithub'ı şimdi indir, profilini oluştur ve dakikalar içinde kişisel programına başla.
+            İlk antrenmanları hemen kullanmaya başlayabilirsin.
+          </p>
+          <div class="cta__buttons">
+            <a href="#" class="store-badge" aria-label="App Store'dan indir">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+              <div>
+                <span class="store-badge__top">İndir</span>
+                <span class="store-badge__bottom">App Store</span>
+              </div>
+            </a>
+            <a href="#" class="store-badge" aria-label="Google Play'den indir">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5V3.5c0-.59.34-1.11.84-1.35L13.69 12 3.84 21.85c-.5-.25-.84-.76-.84-1.35M16.81 15.12 6.05 21.34l8.49-8.49 2.27 2.27M20.16 10.81c.39.31.66.78.66 1.31 0 .53-.25.99-.64 1.3l-2.21 1.27-2.6-2.59 2.6-2.59 2.19 1.3M6.05 2.66l10.76 6.22-2.27 2.27L6.05 2.66"/></svg>
+              <div>
+                <span class="store-badge__top">İndir</span>
+                <span class="store-badge__bottom">Google Play</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__big">
+        <div class="footer__big-text">FITHUB</div>
+      </div>
+
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="nav__brand">
+            <span class="nav__logo-mark">F</span>
+            <span class="nav__logo-text">Fithub</span>
+          </div>
+          <p class="footer__tagline">
+            Cebindeki kişisel<br/>fitness koçun.
+          </p>
+        </div>
+
+        <div class="footer__col">
+          <h4>Ürün</h4>
+          <a href="#features">Özellikler</a>
+          <a href="#how">Nasıl Çalışır</a>
+          <a href="#download">İndir</a>
+        </div>
+
+        <div class="footer__col">
+          <h4>Şirket</h4>
+          <a href="#">Hakkımızda</a>
+          <a href="#">İletişim</a>
+          <a href="#">Kariyer</a>
+        </div>
+
+        <div class="footer__col">
+          <h4>Yasal</h4>
+          <a href="#">Gizlilik Politikası</a>
+          <a href="#">Kullanım Şartları</a>
+          <a href="#">KVKK</a>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© 2026 Fithub. Tüm hakları saklıdır.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" aria-label="Twitter / X">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" aria-label="YouTube">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.08C5.12 19.54 12 19.54 12 19.54s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
