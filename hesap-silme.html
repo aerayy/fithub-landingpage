@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hesap Silme Talebi - FithubPoint</title>
+  <meta name="description" content="FithubPoint hesabınızı ve verilerinizi nasıl silebileceğinizi öğrenin. Uygulama içinden veya web üzerinden hesap silme talebi.">
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0C0C0E;
+      --surface: #141416;
+      --surface2: #1A1A1E;
+      --accent: #3E9E8E;
+      --accent2: #6BBFB5;
+      --text: #F0F4F4;
+      --textSoft: #C4D0CE;
+      --muted: #5A7070;
+      --border: rgba(255,255,255,0.06);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      padding: 16px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(12,12,14,0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav a.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+    nav a.brand img { width: 32px; height: 32px; border-radius: 8px; }
+    nav a.brand span { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; }
+    nav .links a {
+      color: var(--muted); text-decoration: none; font-size: 14px;
+      font-weight: 500; margin-left: 24px;
+    }
+    nav .links a:hover { color: var(--text); }
+
+    main {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 48px 24px 96px;
+    }
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(32px, 5vw, 48px);
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px; letter-spacing: 1.2px;
+      color: var(--accent);
+      margin: 36px 0 12px;
+    }
+    p { color: var(--textSoft); margin-bottom: 12px; font-size: 15px; }
+    ul { padding-left: 22px; margin-bottom: 16px; color: var(--textSoft); font-size: 15px; }
+    li { margin-bottom: 6px; }
+    strong { color: var(--text); }
+    a.inline { color: var(--accent); text-decoration: none; }
+    .meta {
+      color: var(--muted); font-size: 13px;
+      padding-bottom: 24px; border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+    .step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin: 16px 0;
+    }
+    .step h2 { margin-top: 0; }
+    .badge {
+      display: inline-block;
+      font-size: 12px; font-weight: 600;
+      color: var(--accent);
+      background: rgba(62,158,142,0.12);
+      border: 1px solid rgba(62,158,142,0.3);
+      border-radius: 999px;
+      padding: 3px 12px;
+      margin-bottom: 10px;
+    }
+    .mail {
+      display: inline-block;
+      font-weight: 600; color: var(--text);
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 14px;
+      margin: 6px 0 10px;
+      text-decoration: none;
+    }
+    .note {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 14px;
+      color: var(--textSoft);
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/">
+      <img src="assets/logo.png" alt="FithubPoint">
+      <span>FITHUBPOINT</span>
+    </a>
+    <div class="links">
+      <a href="/">Ana Sayfa</a>
+      <a href="/privacy.html">Gizlilik</a>
+      <a href="/terms.html">Kullanım Şartları</a>
+    </div>
+  </nav>
+
+  <main>
+    <h1>Hesap ve Veri Silme</h1>
+    <div class="meta">
+      FithubPoint (com.fithubpoint.app) &middot; Hesabınızı ve kişisel verilerinizi silme yöntemleri
+    </div>
+
+    <p>FithubPoint hesabınızı ve bununla ilişkili tüm kişisel verilerinizi dilediğiniz zaman silebilirsiniz. İki yöntem sunuyoruz:</p>
+
+    <div class="step">
+      <span class="badge">EN HIZLI YÖNTEM</span>
+      <h2>1. Uygulama içinden silme</h2>
+      <p>FithubPoint uygulamasında oturum açın ve şu adımları izleyin:</p>
+      <ul>
+        <li><strong>Profil</strong> sekmesine gidin</li>
+        <li><strong>Ayarlar → Hesabımı Sil</strong> seçeneğine dokunun</li>
+        <li>Onayladığınızda hesabınız ve verileriniz <strong>anında</strong> silinir</li>
+      </ul>
+    </div>
+
+    <div class="step">
+      <span class="badge">UYGULAMAYA ERİŞİMİNİZ YOKSA</span>
+      <h2>2. Web üzerinden talep</h2>
+      <p>Uygulamaya erişemiyorsanız, hesabınızın kayıtlı olduğu <strong>e-posta adresinden</strong> aşağıdaki adrese "Hesap Silme Talebi" konulu bir e-posta gönderin:</p>
+      <a class="mail" href="mailto:destek@fithubpoint.com?subject=Hesap%20Silme%20Talebi&body=Hesab%C4%B1m%C4%B1n%20ve%20t%C3%BCm%20verilerimin%20silinmesini%20talep%20ediyorum.%20Kay%C4%B1tl%C4%B1%20e-posta%20adresim%3A%20">destek@fithubpoint.com</a>
+      <p>Kimliğinizi doğruladıktan sonra talebiniz <strong>en geç 30 gün içinde</strong> sonuçlandırılır ve verileriniz silinir.</p>
+    </div>
+
+    <h2>Silinen veriler</h2>
+    <p>Hesabınız silindiğinde aşağıdaki veriler <strong>kalıcı olarak silinir</strong>:</p>
+    <ul>
+      <li>Profil bilgileriniz (ad-soyad, e-posta, telefon, doğum tarihi, cinsiyet)</li>
+      <li>Sağlık ve fitness verileriniz (boy, kilo, ölçümler, sağlık problemleri, alerjiler, hedefler)</li>
+      <li>Antrenman, beslenme, kardiyo ve su tüketim kayıtlarınız</li>
+      <li>Vücut formu, öğün ve profil fotoğraflarınız (Cloudinary üzerinden 30 gün içinde)</li>
+      <li>Koç ve AI Koç sohbet geçmişiniz</li>
+      <li>Rozetler, başarımlar ve tüm ilerleme geçmişiniz</li>
+      <li>Bildirim (FCM) belirteçleriniz</li>
+    </ul>
+
+    <h2>Yasal olarak saklanan veriler</h2>
+    <p>Yalnızca aşağıdaki veriler, ilgili mevzuat gereği sınırlı süreyle saklanır ancak <strong>kimliğinizle ilişkilendirilmez</strong>:</p>
+    <ul>
+      <li><strong>Ödeme/abonelik kayıtları:</strong> Vergi mevzuatı gereği 10 yıl (anonim)</li>
+      <li><strong>Teknik loglar:</strong> En fazla 6 ay</li>
+    </ul>
+
+    <div class="note">
+      Ayrıntılı bilgi için <a class="inline" href="/privacy.html">Gizlilik Politikası ve KVKK Aydınlatma Metni</a> sayfamızı inceleyebilirsiniz. Sorularınız için: <a class="inline" href="mailto:destek@fithubpoint.com">destek@fithubpoint.com</a>
+    </div>
+  </main>
+
+  <footer>
+    <a href="/">Ana Sayfa</a> &middot;
+    <a href="/privacy.html">Gizlilik Politikası</a> &middot;
+    <a href="/terms.html">Kullanım Şartları</a>
+    <div style="margin-top:8px;">&copy; 2026 FithubPoint. Tüm hakları saklıdır.</div>
+  </footer>
+</body>
+</html>
