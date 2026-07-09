@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Şifre Sıfırlama - Fithub Point</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0C0C0E; --surface: #141416; --surface2: #1A1A1E;
+      --accent: #3E9E8E; --accent2: #6BBFB5; --text: #F0F4F4;
+      --textSoft: #C4D0CE; --muted: #5A7070; --border: rgba(255,255,255,0.06);
+      --danger: #E5675F;
+    }
+    body {
+      font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text);
+      line-height: 1.6; min-height: 100vh; display: flex; align-items: center;
+      justify-content: center; padding: 24px;
+      background-image:
+        radial-gradient(circle at 80% 10%, rgba(62,158,142,0.14), transparent 45%),
+        radial-gradient(circle at 15% 90%, rgba(62,158,142,0.08), transparent 40%);
+    }
+    .card {
+      width: 100%; max-width: 420px; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 24px; padding: 36px 30px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+    }
+    .logo { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+    .logo img { width: 44px; height: 44px; border-radius: 12px; }
+    .logo span {
+      font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 1.5px;
+    }
+    .logo span b { color: var(--accent); font-weight: 400; }
+    h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+    p.sub { color: var(--textSoft); font-size: 14.5px; margin-bottom: 24px; }
+    label { display: block; font-size: 13px; color: var(--textSoft); margin: 14px 0 6px; font-weight: 600; }
+    input {
+      width: 100%; padding: 14px 16px; background: var(--surface2);
+      border: 1px solid var(--border); border-radius: 12px; color: var(--text);
+      font-size: 15px; font-family: inherit; outline: none; transition: border-color .2s;
+    }
+    input:focus { border-color: var(--accent); }
+    button {
+      width: 100%; margin-top: 22px; padding: 15px; border: none; border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #06120F;
+      font-size: 16px; font-weight: 700; font-family: inherit; cursor: pointer;
+      transition: transform .12s, opacity .2s;
+    }
+    button:hover { transform: translateY(-1px); }
+    button:disabled { opacity: .55; cursor: not-allowed; transform: none; }
+    .msg { margin-top: 18px; font-size: 14px; border-radius: 12px; padding: 13px 15px; display: none; }
+    .msg.err { display: block; background: rgba(229,103,95,0.12); border: 1px solid rgba(229,103,95,0.35); color: #F0A9A3; }
+    .msg.ok { display: block; background: rgba(62,158,142,0.12); border: 1px solid rgba(62,158,142,0.35); color: var(--accent2); }
+    .hint { margin-top: 16px; font-size: 12.5px; color: var(--muted); text-align: center; }
+    a { color: var(--accent2); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">
+      <img src="assets/logo.png" alt="Fithub Point">
+      <span>FITHUB <b>POINT</b></span>
+    </div>
+    <h1>Şifreni sıfırla</h1>
+    <p class="sub">Yeni şifreni belirle ve uygulamaya geri dön.</p>
+
+    <form id="form">
+      <label for="pw">Yeni şifre</label>
+      <input type="password" id="pw" autocomplete="new-password" placeholder="En az 8 karakter" required minlength="8">
+      <label for="pw2">Yeni şifre (tekrar)</label>
+      <input type="password" id="pw2" autocomplete="new-password" placeholder="Şifreni tekrar gir" required minlength="8">
+      <button type="submit" id="btn">Şifreyi güncelle</button>
+    </form>
+
+    <div class="msg" id="msg"></div>
+    <p class="hint">Şifreni güncelledikten sonra Fithub Point uygulamasından yeni şifrenle giriş yapabilirsin.</p>
+  </div>
+
+  <script>
+    var API = 'https://fithub-backend-jd40.onrender.com/auth/reset-password';
+    var params = new URLSearchParams(window.location.search);
+    var token = params.get('token') || '';
+    var form = document.getElementById('form');
+    var btn = document.getElementById('btn');
+    var msg = document.getElementById('msg');
+
+    function show(type, text) { msg.className = 'msg ' + type; msg.textContent = text; }
+
+    if (!token) {
+      form.style.display = 'none';
+      show('err', 'Geçersiz veya eksik sıfırlama bağlantısı. Lütfen uygulamadan yeni bir sıfırlama isteği gönder.');
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var pw = document.getElementById('pw').value;
+      var pw2 = document.getElementById('pw2').value;
+      if (pw.length < 8) { show('err', 'Şifre en az 8 karakter olmalı.'); return; }
+      if (pw !== pw2) { show('err', 'Şifreler eşleşmiyor.'); return; }
+
+      btn.disabled = true; btn.textContent = 'Güncelleniyor...';
+      msg.className = 'msg';
+
+      fetch(API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: token, new_password: pw })
+      })
+      .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+      .then(function (res) {
+        if (res.ok) {
+          form.style.display = 'none';
+          show('ok', 'Şifren başarıyla güncellendi. Artık uygulamadan yeni şifrenle giriş yapabilirsin.');
+        } else {
+          show('err', (res.d && res.d.detail) ? res.d.detail : 'Bağlantı geçersiz veya süresi dolmuş. Lütfen yeni bir istek gönder.');
+          btn.disabled = false; btn.textContent = 'Şifreyi güncelle';
+        }
+      })
+      .catch(function () {
+        show('err', 'Bir hata oluştu. İnternet bağlantını kontrol edip tekrar dene.');
+        btn.disabled = false; btn.textContent = 'Şifreyi güncelle';
+      });
+    });
+  </script>
+</body>
+</html>
