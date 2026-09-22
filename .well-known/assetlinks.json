@@ -1,10 +1,13 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "com.fithubpoint.app",
       "sha256_cert_fingerprints": [
+        "A6:6B:1D:84:F3:E3:77:F3:96:D7:9B:CB:7A:A4:74:C8:77:42:81:1B:7F:89:EA:80:FF:CE:DC:5D:6E:13:CD:2A",
         "A0:03:C2:3C:B8:4C:21:EF:EA:A1:FC:15:8F:CC:1D:A8:E3:76:89:C0:69:93:D5:34:4C:98:A5:13:2E:88:99:C1"
       ]
     }
