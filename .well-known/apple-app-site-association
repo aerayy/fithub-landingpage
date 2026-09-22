@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["8Y9LRXRN75.com.fithubpoint.app"],
+        "components": [
+          { "/": "/app" },
+          { "/": "/app/*" }
+        ]
+      }
+    ]
+  }
+}
