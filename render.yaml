@@ -23,6 +23,16 @@ services:
       - path: /*.html
         name: Cache-Control
         value: "public, max-age=60, must-revalidate"
+      # App Links / Universal Links doğrulama dosyaları (uzantısız AASA dahil)
+      - path: /.well-known/*
+        name: Content-Type
+        value: "application/json"
+      - path: /.well-known/*
+        name: Cache-Control
+        value: "public, max-age=300"
+      - path: /app/*
+        name: Cache-Control
+        value: "public, max-age=60, must-revalidate"
       # Security headers
       - path: /*
         name: X-Content-Type-Options
@@ -31,6 +41,20 @@ services:
         name: Referrer-Policy
         value: "strict-origin-when-cross-origin"
     routes:
+      # .well-known dosyaları noktasız klasörden sunulur (dot-klasör sunumu garanti değil)
+      - type: rewrite
+        source: /.well-known/assetlinks.json
+        destination: /well-known/assetlinks.json
+      - type: rewrite
+        source: /.well-known/apple-app-site-association
+        destination: /well-known/apple-app-site-association
+      # Uygulama bağlantıları: uygulama yüklü değilse yönlendirme sayfası
+      - type: rewrite
+        source: /app
+        destination: /app/index.html
+      - type: rewrite
+        source: /app/*
+        destination: /app/index.html
       # SPA-like fallback (ileride sayfalar eklersen kirilmasin)
       - type: rewrite
         source: /*
