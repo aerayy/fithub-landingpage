@@ -33,6 +33,10 @@ services:
       - path: /app/*
         name: Cache-Control
         value: "public, max-age=60, must-revalidate"
+      # Uygulama bağlantı sayfaları aramada çıkmasın (robots.txt Disallow yerine; 25 Eki 2026)
+      - path: /app/*
+        name: X-Robots-Tag
+        value: "noindex"
       # Security headers
       - path: /*
         name: X-Content-Type-Options
