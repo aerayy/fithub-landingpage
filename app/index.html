@@ -70,7 +70,9 @@
       } else if (parts[1] === "davet" && parts[2]) {
         // 25 Eki 2026 (P3-5): davet bağlantısı — uygulama yüklü değilse kod + mağaza; Android'de kod Play'e
         // yükleme yönlendiricisi (Install Referrer) olarak da gider, uygulama ilk açılışta okuyabilir.
-        var dk = decodeURIComponent(parts[2]).toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 16);
+        var ham = parts[2];
+        try { ham = decodeURIComponent(ham); } catch (e) { /* bozuk % dizisi: ham hâli kullan, sayfa durmasın */ }
+        var dk = ham.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 16);
         if (dk) {
           title.textContent = "Davet kodun hazır";
           lead.textContent = "FitHub Point'i indir, kayıt ol ve bu kodu gir: 30 gün tüm özellikleriyle ücretsiz başla. " +
@@ -87,7 +89,7 @@
             };
           }
         }
-    } else if (parts[1] === "workout") {
+      } else if (parts[1] === "workout") {
         title.textContent = "Bugünkü antrenman";
         lead.textContent = "Antrenman programını görmek için uygulamayı aç. Yüklü değilse Google Play'den indir.";
       } else if (parts[1] === "badges") {
