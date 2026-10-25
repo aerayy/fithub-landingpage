@@ -1,4 +1,4 @@
-# FitHub Point — 25 Ekim 2026
+# Fithub Point — 25 Ekim 2026
 User-agent: *
 Allow: /
 # Uygulama bağlantı sayfaları (/app/*) taranabilir ama dizine girmez: sayfalarda noindex + X-Robots-Tag başlığı var.
