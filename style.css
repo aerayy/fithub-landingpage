@@ -547,6 +547,10 @@ em {
 
 .hero__title-line {
   display: block;
+  /* 2 Kas 2026 (Nedim 6.5): background-clip:text + sıkı satır yüksekliği Ğ/İ/Ç/Ş işaretlerini boyanmamış alana düşürüyordu
+     ("SAGLIGIN ICIN" görünüyordu) → üst/alt boşluk, eksi kenar boşluğuyla düzen aynı kalır */
+  padding: 0.16em 0 0.08em;
+  margin: -0.16em 0 -0.08em;
   background: linear-gradient(180deg, #ffffff 0%, #ffffff 55%, #b6c2c5 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -1195,6 +1199,9 @@ em {
   letter-spacing: -0.005em;
   margin-bottom: 24px;
   font-weight: 400;
+  /* 2 Kas 2026 (Nedim 6.5): Türkçe büyük harf işaretleri gradyan kutusunun dışında kalmasın */
+  padding: 0.16em 0 0.08em;
+  margin-top: -0.16em;
   background: linear-gradient(180deg, #ffffff 0%, #ffffff 50%, #a8b4b7 100%);
   -webkit-background-clip: text;
   background-clip: text;
