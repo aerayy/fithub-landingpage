@@ -145,4 +145,44 @@
       });
     });
   }
+
+  // ─── App Store kampanya bağlantısı (9 Kas 2026) ─────────────
+  // pt = App Store Connect sağlayıcı kimliği (Provider Token; App Analytics → Kampanyalar'dan alınır).
+  // Elimizde YOK: sabit boş kaldığı sürece App Store bağlantılarına dokunulmaz. Dolunca sayfa
+  // yüklenince her <a href="…apps.apple.com…"> bağlantısına ?pt=…&ct=site_<sayfa>&mt=8 eklenir
+  // (JSON-LD içindeki installUrl bir bağlantı olmadığı için etkilenmez). Google Play tarafı için
+  // utm etiketi HTML'de doğrudan referrer parametresi olarak yazılıdır.
+  const APPLE_CAMPAIGN_PT = "";
+
+  if (APPLE_CAMPAIGN_PT) {
+    const PAGE_TOKENS = [
+      [/^\/(index\.html)?$/, "ana_sayfa"],
+      [/^\/app\/coach(\/|$)/, "koc_sayfasi"],
+      [/^\/app\/workout(\/|$)/, "antrenman"],
+      [/^\/app\/badges(\/|$)/, "rozetler"],
+      [/^\/app(\/|$)/, "uygulama"],
+    ];
+    const path = window.location.pathname;
+    let page = null;
+    for (const [re, token] of PAGE_TOKENS) {
+      if (re.test(path)) { page = token; break; }
+    }
+    if (!page) {
+      page = path.replace(/^\/+|\.html$/g, "").replace(/[^A-Za-z0-9_-]+/g, "_") || "sayfa";
+    }
+    const ct = ("site_" + page).slice(0, 40); // Apple: ct en çok 40 karakter
+
+    document.querySelectorAll('a[href*="apps.apple.com"]').forEach((a) => {
+      try {
+        const url = new URL(a.href);
+        if (url.searchParams.has("pt")) return; // elle etiketlenmiş bağlantıya dokunma
+        url.searchParams.set("pt", APPLE_CAMPAIGN_PT);
+        url.searchParams.set("ct", ct);
+        url.searchParams.set("mt", "8");
+        a.href = url.toString();
+      } catch (e) {
+        /* geçersiz URL: dokunma */
+      }
+    });
+  }
 })();

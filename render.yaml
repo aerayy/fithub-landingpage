@@ -15,6 +15,13 @@ services:
       - path: /script.js
         name: Cache-Control
         value: "public, max-age=300, must-revalidate"
+      # Çerez/rıza bandı (tüm sayfalarda ortak; 9 Kas 2026)
+      - path: /consent.js
+        name: Cache-Control
+        value: "public, max-age=300, must-revalidate"
+      - path: /consent.css
+        name: Cache-Control
+        value: "public, max-age=300, must-revalidate"
       # Foto/video assets — uzun cache
       - path: /assets/*
         name: Cache-Control

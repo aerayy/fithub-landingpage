@@ -3,6 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Ölçüm (9 Kas 2026): Google Onay Modu v2 → GA4 (G-8K471Y72SB) → Meta Pixel (2590275028153736).
+       Varsayılan: dört sinyal de reddedilmiş. Rıza bandı /consent.js + /consent.css; metin /privacy.html#cerezler -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'wait_for_update': 500
+    });
+    // Ziyaretçi daha önce seçim yaptıysa (localStorage fp_consent_v1 = granted | denied) hemen uygula
+    var fpConsentStored = null;
+    try { fpConsentStored = localStorage.getItem('fp_consent_v1'); } catch (e) {}
+    if (fpConsentStored !== 'granted' && fpConsentStored !== 'denied') fpConsentStored = null;
+    if (fpConsentStored) {
+      gtag('consent', 'update', {
+        'ad_storage': fpConsentStored,
+        'ad_user_data': fpConsentStored,
+        'ad_personalization': fpConsentStored,
+        'analytics_storage': fpConsentStored
+      });
+    }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8K471Y72SB"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-8K471Y72SB');
+  </script>
+  <!-- Meta Pixel: init'ten önce rıza geri çekilir (revoke); rıza gelince consent.js grant + PageView verir.
+       noscript img parçası bilerek YOK: JS kapalıyken rıza durumu bilinemez, görsel koşulsuz istek atardı (KVKK). -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    // Rıza yoksa ya da reddedildiyse init'ten ÖNCE geri çek. Kayıtlı rıza varsa geri çekme: fbevents.js
+    // yüklenmeden sıraya giren 'revoke', arkasındaki init + grant + PageView'ı da askıda bırakıyor (9 Kas testi).
+    if (fpConsentStored !== 'granted') fbq('consent', 'revoke');
+    fbq('init', '2590275028153736');
+    if (fpConsentStored === 'granted') { fbq('consent', 'grant'); fbq('track', 'PageView'); }
+  </script>
   <title>Şifre Sıfırlama - Fithub Point</title>
   <meta name="robots" content="noindex">
   <link rel="icon" href="assets/logo.png">
@@ -59,6 +104,9 @@
     .hint { margin-top: 16px; font-size: 12.5px; color: var(--muted); text-align: center; }
     a { color: var(--accent2); text-decoration: none; }
   </style>
+  <!-- Çerez/rıza bandı (tüm sayfalarda ortak) -->
+  <link rel="stylesheet" href="/consent.css">
+  <script src="/consent.js" defer></script>
 </head>
 <body>
   <div class="card">
