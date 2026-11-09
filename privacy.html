@@ -3,6 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Ölçüm (9 Kas 2026): Google Onay Modu v2 → GA4 (G-8K471Y72SB) → Meta Pixel (2590275028153736).
+       Varsayılan: dört sinyal de reddedilmiş. Rıza bandı /consent.js + /consent.css; metin /privacy.html#cerezler -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'wait_for_update': 500
+    });
+    // Ziyaretçi daha önce seçim yaptıysa (localStorage fp_consent_v1 = granted | denied) hemen uygula
+    var fpConsentStored = null;
+    try { fpConsentStored = localStorage.getItem('fp_consent_v1'); } catch (e) {}
+    if (fpConsentStored !== 'granted' && fpConsentStored !== 'denied') fpConsentStored = null;
+    if (fpConsentStored) {
+      gtag('consent', 'update', {
+        'ad_storage': fpConsentStored,
+        'ad_user_data': fpConsentStored,
+        'ad_personalization': fpConsentStored,
+        'analytics_storage': fpConsentStored
+      });
+    }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8K471Y72SB"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-8K471Y72SB');
+  </script>
+  <!-- Meta Pixel: init'ten önce rıza geri çekilir (revoke); rıza gelince consent.js grant + PageView verir.
+       noscript img parçası bilerek YOK: JS kapalıyken rıza durumu bilinemez, görsel koşulsuz istek atardı (KVKK). -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    // Rıza yoksa ya da reddedildiyse init'ten ÖNCE geri çek. Kayıtlı rıza varsa geri çekme: fbevents.js
+    // yüklenmeden sıraya giren 'revoke', arkasındaki init + grant + PageView'ı da askıda bırakıyor (9 Kas testi).
+    if (fpConsentStored !== 'granted') fbq('consent', 'revoke');
+    fbq('init', '2590275028153736');
+    if (fpConsentStored === 'granted') { fbq('consent', 'grant'); fbq('track', 'PageView'); }
+  </script>
   <title>Gizlilik Politikası ve KVKK Aydınlatma Metni - Fithub Point</title>
   <meta name="description" content="Fithub Point kişisel verilerinizi nasıl topluyor, kullanıyor ve koruyor. KVKK uyumlu gizlilik politikası.">
   <link rel="icon" href="assets/logo.png">
@@ -102,6 +147,9 @@
     }
     footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
   </style>
+  <!-- Çerez/rıza bandı (tüm sayfalarda ortak) -->
+  <link rel="stylesheet" href="/consent.css">
+  <script src="/consent.js" defer></script>
 </head>
 <body>
   <nav>
@@ -118,7 +166,7 @@
   <main>
     <h1>Gizlilik Politikası ve KVKK Aydınlatma Metni</h1>
     <div class="meta">
-      Yürürlük tarihi: 20 Mayıs 2026 &middot; Son güncelleme: 16 Ekim 2026
+      Yürürlük tarihi: 20 Mayıs 2026 &middot; Son güncelleme: 9 Kasım 2026
     </div>
 
     <p>Fithub Point mobil uygulamasını ve <strong>fithubpoint.com</strong> internet sitesini (birlikte "Platform") kullanırken paylaştığınız kişisel verilerinizin gizliliği bizim için önemlidir. Bu metin, 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") ve ilgili mevzuat kapsamında veri sorumlusu sıfatıyla yükümlülüklerimizi yerine getirmek üzere hazırlanmıştır.</p>
@@ -170,7 +218,7 @@
     <p>KVKK madde 5 ve 6 kapsamında verileriniz aşağıdaki hukuki sebeplere dayanılarak işlenir:</p>
     <ul>
       <li><strong>Sözleşmenin kurulması ve ifası:</strong> Üyelik ve abonelik hizmetlerinin sunulması</li>
-      <li><strong>Açık rızanız:</strong> Özel nitelikli kişisel veriler (sağlık verileri), bu verilerin yurt dışındaki hizmet sağlayıcılarda işlenmesi ve pazarlama amaçlı bildirimler için</li>
+      <li><strong>Açık rızanız:</strong> Özel nitelikli kişisel veriler (sağlık verileri), bu verilerin yurt dışındaki hizmet sağlayıcılarda işlenmesi, pazarlama amaçlı bildirimler ve internet sitesindeki ölçüm çerezleri (bkz. 12. bölüm) için</li>
       <li><strong>Hukuki yükümlülüklerin yerine getirilmesi:</strong> Vergi, fatura, finansal kayıt</li>
       <li><strong>Meşru menfaatlerimiz:</strong> Güvenlik, dolandırıcılık önleme, hizmet iyileştirme</li>
     </ul>
@@ -193,6 +241,8 @@
         <tr><td>Apple Inc. / Google LLC</td><td>Uygulama içi abonelik ödemeleri (App Store / Google Play)</td><td>ABD</td></tr>
         <tr><td>Firebase Cloud Messaging (Google)</td><td>Anlık bildirim gönderimi</td><td>ABD</td></tr>
         <tr><td>Sentry</td><td>Hata izleme ve çökme raporlama (kişisel veriler filtrelenir/maskelenir)</td><td>AB</td></tr>
+        <tr><td>Google LLC (Google Analytics 4)</td><td>fithubpoint.com ziyaret istatistikleri ve Google Ads kampanya ölçümü; çerezler yalnızca sitedeki rıza bandında izin verirseniz kullanılır (bkz. 12. bölüm)</td><td>ABD</td></tr>
+        <tr><td>Meta Platforms, Inc. (Meta Pixel)</td><td>fithubpoint.com üzerindeki Instagram/Facebook reklam ölçümü; yalnızca rıza verirseniz veri gönderir (bkz. 12. bölüm)</td><td>ABD</td></tr>
         <tr><td>Yasal merciler</td><td>Mahkeme kararı veya mevzuat gereği talep edilirse</td><td>Türkiye</td></tr>
       </tbody>
     </table>
@@ -249,10 +299,19 @@
     <h2>11. Bildirimler ve Pazarlama</h2>
     <p>Push bildirimleri, e-posta veya SMS yoluyla pazarlama iletişimi göndermeden önce açık rızanızı alırız. Bu rızayı dilediğiniz zaman <strong>Ayarlar → Bildirimler</strong> menüsünden veya iletilerin alt kısmındaki "abonelikten çık" bağlantısıyla geri çekebilirsiniz.</p>
 
-    <h2>12. Politikadaki Değişiklikler</h2>
+    <h2 id="cerezler">12. Çerezler ve Ölçüm</h2>
+    <p><strong>fithubpoint.com</strong> internet sitesinde, siteyi geliştirmek ve reklam kampanyalarımızın etkisini ölçmek için iki araç kullanıyoruz:</p>
+    <ul>
+      <li><strong>Google Analytics 4</strong> (Google LLC, ABD): ziyaret sayısı, görüntülenen sayfalar, cihaz türü ve trafik kaynağı gibi toplu kullanım istatistikleri ile Google Ads kampanyalarının ölçümü.</li>
+      <li><strong>Meta Pixel</strong> (Meta Platforms, Inc., ABD): Instagram ve Facebook reklamlarımızın etkisinin ölçümü.</li>
+    </ul>
+    <p>Bu araçlar çerez ve benzeri tanımlayıcıları <strong>yalnızca siz izin verirseniz</strong> kullanır. Siteye ilk girişinizde alt kenarda çıkan çerez bandında <strong>"Kabul et"</strong> ile rıza verebilir, <strong>"Reddet"</strong> ile reddedebilirsiniz. Reddederseniz hiçbir ölçüm çerezi yerleştirilmez; Google etiketi yalnızca kimliksiz ve çerezsiz toplu sinyaller gönderir (Google Onay Modu), Meta Pixel hiç veri göndermez. Seçiminiz tarayıcınızın yerel depolamasında (<code>fp_consent_v1</code>) tutulur, sunucularımıza gönderilmez.</p>
+    <p>Rızanızı dilediğiniz zaman geri alabilirsiniz: <a href="#cerezler" data-fp-consent-reset style="color:var(--accent);text-decoration:none;"><strong>çerez tercihimi değiştir</strong></a> bağlantısına tıklayın ya da tarayıcınızın bu siteye ait verilerini (yerel depolama) silin; bant yeniden görünür ve yeni seçiminize kadar her şey reddedilmiş sayılır. Bu araçlarla toplanan veriler Google ve Meta'nın yurt dışındaki sunucularına aktarılır; aktarım KVKK madde 9 kapsamında açık rızanıza dayanarak yapılır.</p>
+
+    <h2>13. Politikadaki Değişiklikler</h2>
     <p>Bu politikada yapılacak önemli değişiklikler en az 7 gün önceden e-posta veya uygulama içi bildirim ile sizlere duyurulur. Güncel sürüm her zaman bu sayfada yayımlanır.</p>
 
-    <h2>13. İletişim</h2>
+    <h2>14. İletişim</h2>
     <p>Veri sorumlusu olarak bizimle iletişime geçmek için:</p>
     <p>
       <strong>E-posta:</strong> destek@fithubpoint.com<br>

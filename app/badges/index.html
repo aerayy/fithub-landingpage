@@ -3,6 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <!-- Ölçüm (9 Kas 2026): Google Onay Modu v2 → GA4 (G-8K471Y72SB) → Meta Pixel (2590275028153736).
+       Varsayılan: dört sinyal de reddedilmiş. Rıza bandı /consent.js + /consent.css; metin /privacy.html#cerezler -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'wait_for_update': 500
+    });
+    // Ziyaretçi daha önce seçim yaptıysa (localStorage fp_consent_v1 = granted | denied) hemen uygula
+    var fpConsentStored = null;
+    try { fpConsentStored = localStorage.getItem('fp_consent_v1'); } catch (e) {}
+    if (fpConsentStored !== 'granted' && fpConsentStored !== 'denied') fpConsentStored = null;
+    if (fpConsentStored) {
+      gtag('consent', 'update', {
+        'ad_storage': fpConsentStored,
+        'ad_user_data': fpConsentStored,
+        'ad_personalization': fpConsentStored,
+        'analytics_storage': fpConsentStored
+      });
+    }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8K471Y72SB"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-8K471Y72SB');
+  </script>
+  <!-- Meta Pixel: init'ten önce rıza geri çekilir (revoke); rıza gelince consent.js grant + PageView verir.
+       noscript img parçası bilerek YOK: JS kapalıyken rıza durumu bilinemez, görsel koşulsuz istek atardı (KVKK). -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    // Rıza yoksa ya da reddedildiyse init'ten ÖNCE geri çek. Kayıtlı rıza varsa geri çekme: fbevents.js
+    // yüklenmeden sıraya giren 'revoke', arkasındaki init + grant + PageView'ı da askıda bırakıyor (9 Kas testi).
+    if (fpConsentStored !== 'granted') fbq('consent', 'revoke');
+    fbq('init', '2590275028153736');
+    if (fpConsentStored === 'granted') { fbq('consent', 'grant'); fbq('track', 'PageView'); }
+  </script>
   <title>Fithub Point uygulamasında aç</title>
   <meta name="description" content="Bu bağlantı Fithub Point uygulamasında açılır. Uygulama yüklü değilse Google Play'den indir." />
   <meta name="robots" content="noindex" />
@@ -29,6 +74,9 @@
     .back { display:inline-block; margin-top:8px; color:var(--soft); font-size:14px; text-decoration:none; }
     .back:hover { color:var(--text); }
   </style>
+  <!-- Çerez/rıza bandı (tüm sayfalarda ortak) -->
+  <link rel="stylesheet" href="/consent.css" />
+  <script src="/consent.js" defer></script>
 </head>
 <body>
   <main class="card">
@@ -41,7 +89,7 @@
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
       <div><small>Yüklüyse</small>Uygulamayı aç</div>
     </a>
-    <a class="btn" href="https://play.google.com/store/apps/details?id=com.fithubpoint.app" rel="noopener">
+    <a class="btn" href="https://play.google.com/store/apps/details?id=com.fithubpoint.app&amp;referrer=utm_source%3Dsite%26utm_medium%3Dbuton%26utm_campaign%3Drozetler" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 20.5V3.5c0-.59.34-1.11.84-1.35L13.69 12 3.84 21.85c-.5-.25-.84-.76-.84-1.35M16.81 15.12 6.05 21.34l8.49-8.49 2.27 2.27M20.16 10.81c.39.31.66.78.66 1.31 0 .53-.25.99-.64 1.3l-2.21 1.27-2.6-2.59 2.6-2.59 2.19 1.3M6.05 2.66l10.76 6.22-2.27 2.27L6.05 2.66"/></svg>
       <div><small>İndir</small>Google Play</div>
     </a>
@@ -78,7 +126,7 @@
         var open = document.getElementById("openApp");
         var target = location.pathname + location.search;
         open.href = "intent://fithubpoint.com" + target + "#Intent;scheme=https;package=com.fithubpoint.app;S.browser_fallback_url=" +
-          encodeURIComponent("https://play.google.com/store/apps/details?id=com.fithubpoint.app") + ";end";
+          encodeURIComponent("https://play.google.com/store/apps/details?id=com.fithubpoint.app&referrer=utm_source%3Dsite%26utm_medium%3Dbuton%26utm_campaign%3Drozetler") + ";end";
         open.hidden = false;
       }
     })();
