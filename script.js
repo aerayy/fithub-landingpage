@@ -152,7 +152,7 @@
   // yüklenince her <a href="…apps.apple.com…"> bağlantısına ?pt=…&ct=site_<sayfa>&mt=8 eklenir
   // (JSON-LD içindeki installUrl bir bağlantı olmadığı için etkilenmez). Google Play tarafı için
   // utm etiketi HTML'de doğrudan referrer parametresi olarak yazılıdır.
-  const APPLE_CAMPAIGN_PT = "";
+  const APPLE_CAMPAIGN_PT = "129480112";
 
   if (APPLE_CAMPAIGN_PT) {
     const PAGE_TOKENS = [
